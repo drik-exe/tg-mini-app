@@ -1,84 +1,85 @@
-import { extendTheme } from "@chakra-ui/react";
+import { createSystem, defaultConfig } from "@chakra-ui/react";
 
-const theme = extendTheme({
-    colors: {
-        bgColor: {
-            100: "#F9F9F9",
-            900: "#252525",
+export const theme = createSystem(defaultConfig, {
+    theme: {
+        tokens: {
+            colors: {
+                bgColor: {
+                    100: { value: "#F9F9F9" },
+                    900: { value: "#252525" },
+                },
+                boxColor: {
+                    100: { value: "#FFFFFF" },
+                    900: { value: "#1A1A1A" },
+                },
+                textColor: {
+                    100: { value: "#252525" },
+                    900: { value: "#F9F9F9" },
+                },
+                accentColor: {
+                    100: { value: "#FFCF0D" },
+                    900: { value: "#FFCF0D" },
+                },
+                inputColor: {
+                    100: { value: "#F5F5F5" },
+                    900: { value: "#F5F5F5" },
+                },
+            },
+            shadows: {
+                light: { value: "5px 5px 10px rgba(0, 0, 0, 0.03), -5px -5px 10px rgba(255, 255, 255, 1)" },
+                dark: { value: "5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(26, 26, 26, 1)" },
+                selectLight: { value: "0px 5px 10px rgba(0, 0, 0, 0.05)" },
+                selectDark: { value: "0px 5px 10px rgba(0, 0, 0, 0.05)" },
+                botContainerLight: { value: "0px -4px 20px rgba(0, 0, 0, 0.05)" },
+                buttonLight: { value: "0px 2px 20px rgba(255, 207, 13, 0.7)" },
+            },
         },
-        boxColor: {
-            100: "#FFFFFF",
-            900: "#1A1A1A",
-        },
-        textColor: {
-            100: "#252525",
-            900: "#F9F9F9",
-        },
-        accentColor: {
-            100: "#FFCF0D",
-            900: "#FFCF0D",
-        },
-        inputColor: {
-            100: "#F5F5F5",
-            900: "#F5F5F5",
-        },
-    },
-    shadows: {
-        light: "5px 5px 10px rgba(0, 0, 0, 0.03), -5px -5px 10px rgba(255, 255, 255, 1)",
-        dark: "5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(26, 26, 26, 1)",
-        selectLight: "0px 5px 10px rgba(0, 0, 0, 0.05)",
-        selectDark: "0px 5px 10px rgba(0, 0, 0, 0.05)",
-        botContainerLight: "0px -4px 20px rgba(0, 0, 0, 0.05)",
-        buttonLight: "0px 2px 20px rgba(255, 207, 13, 0.7)",
-    },
-    components: {
-        Button: {
-            variants: {
-                "main-button": {
-                    bg: "#FFCF0D",
-                    color: "#252525",
-                    flex: 1,
-                    borderRadius: 16,
-                    h: 14,
-                    fontSize: 20,
-                    fontWeight: "bold",
-                    shadow: "buttonLight",
-                    fontFamily: "Montserrat",
-                    _active: {
-                        outline: "none",
-                        boxShadow: "none",
+        components: {
+            Button: {
+                variants: {
+                    "main-button": {
+                        bg: { base: "#FFCF0D" },
+                        color: { base: "#252525" },
+                        borderRadius: { base: "16px" },
+                        h: { base: "14" },
+                        fontSize: { base: "20px" },
+                        fontWeight: { base: "bold" },
+                        boxShadow: { base: "buttonLight" },
+                        fontFamily: { base: "Montserrat" },
+                        _active: {
+                            outline: { value: "none" },
+                            boxShadow: { value: "none" },
+                        },
+                    },
+                },
+            },
+            Container: {
+                variants: {
+                    "bot-container": {
+                        bg: { base: "boxColor.100" },
+                        w: { base: "full" },
+                        maxW: { base: "container.md" },
+                        px: { base: "8" },
+                        py: { base: "4" },
+                        boxShadow: { base: "botContainerLight" },
+                        zIndex: { base: "10" },
+                        pos: { base: "fixed" },
+                        bottom: { base: "0" },
+                        borderTopRadius: { base: "26px" },
                     },
                 },
             },
         },
-        Container: {
-            variants: {
-                "bot-container": {
-                    bg: "boxColor.100",
-                    w: "full",
-                    maxW: "container.md",
-                    px: 8,
-                    py: 4,
-                    shadow: "botContainerLight",
-                    zIndex: 10,
-                    pos: "fixed",
-                    bottom: 0,
-                    borderTopRadius: 26,
+        styles: {
+            global: {
+                "*": {
+                    WebkitTapHighlightColor: { value: "transparent" },
+                },
+                "*:focus": {
+                    outline: { value: "none" },
+                    boxShadow: { value: "none" },
                 },
             },
         },
     },
-    styles: {
-        global: {
-            "*": {
-                WebkitTapHighlightColor: "transparent",
-            },
-            "*:focus": {
-                outline: "none",
-                boxShadow: "none",
-            },
-        },
-    },
 });
-
-export default theme;

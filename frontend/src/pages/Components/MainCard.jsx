@@ -7,17 +7,16 @@ import {
     Text,
     Flex,
     CardFooter,
-    useColorModeValue,
     Box,
     useDisclosure
 } from "@chakra-ui/react";
 import ProductDrawer from "./ProductDrawer"
 import MainDrawer from "./MainDrawer"
 
-export default function MainCard({ product }) {
-    const boxClr = useColorModeValue("boxColor.100", "boxColor.900");
-    const textClr = useColorModeValue("textColor.100", "textColor.900");
-    const accentColor = useColorModeValue("accentColor.100", "accentColor.900");
+const MainCard = ({ product }) => {
+    const boxColor = "boxColor.100"; // Replace with your theme's box color
+    const textColor = "textColor.100"; // Replace with your theme's text color
+    const accentColor = "accentColor.100"; // Replace with your theme's accent color
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -34,10 +33,10 @@ export default function MainCard({ product }) {
                 mb={6} 
                 css={`break-inside: avoid;`} 
                 boxShadow="light" 
-                backgroundColor={boxClr} 
+                backgroundColor={boxColor} 
                 cursor="pointer"
                 onClick={onOpen} 
-                color={textClr}
+                color={textColor}
             >
                 <CardBody p={0}>
                     <Image
@@ -105,4 +104,6 @@ export default function MainCard({ product }) {
             } />
         </>
     );
-}
+};
+
+export default MainCard;

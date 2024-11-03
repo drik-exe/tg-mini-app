@@ -2,15 +2,14 @@ import React, { useRef, useState, useEffect } from 'react';
 import {
     Drawer,
     DrawerContent,
-    DrawerOverlay,
-    useColorModeValue,
+    DrawerBackdrop ,
     Box,
-    Center
+    Center,
 } from '@chakra-ui/react';
 
 export default function MainDrawer({ isOpen, onClose, children }) {
-    const boxClr = useColorModeValue("boxColor.100", "boxColor.900");
-    const textClr = useColorModeValue("textColor.100", "textColor.900");
+    const boxColor = "boxColor.100"; // Replace with your theme values
+    const textColor = "textColor.100"; // Replace with your theme values
 
     const [topOffset, setTopOffset] = useState(32);
     const [animatingBack, setAnimatingBack] = useState(false);
@@ -24,38 +23,38 @@ export default function MainDrawer({ isOpen, onClose, children }) {
     const handleTouchStart = (e) => {
         if (drawerRef.current && contentRef.current) {
             const scrollTop = contentRef.current.scrollTop;
-    
+
             setScrollAtTop(scrollTop === 0);
-    
+
             if (scrollTop === 0 && !touchHandledOnce) {
                 startTouchY.current = e.touches[0].clientY;
                 startTime.current = Date.now();
-                setTouchHandledOnce(true); 
+                setTouchHandledOnce(true);
             }
         }
     };
-    
+
     const handleTouchMove = (e) => {
         if (scrollAtTop && touchHandledOnce) {
             const currentY = e.touches[0].clientY;
             const deltaY = currentY - startTouchY.current;
-    
+
             const newOffset = topOffset + deltaY;
             setTopOffset(Math.max(newOffset, 32));
-    
+
             startTouchY.current = currentY;
-        } if (contentRef.current.scrollTop !== 0) {
+        } else if (contentRef.current.scrollTop !== 0) {
             setScrollAtTop(false);
         }
     };
-    
+
     const handleTouchEnd = () => {
         if (scrollAtTop && touchHandledOnce) {
             const endTime = Date.now();
             const elapsedTime = endTime - startTime.current;
             const swipeDistance = topOffset - 32;
             const swipeVelocity = Math.abs(swipeDistance / elapsedTime);
-    
+
             if (swipeVelocity > 0.5 || topOffset > window.innerHeight / 3) {
                 onClose();
             } else {
@@ -64,10 +63,10 @@ export default function MainDrawer({ isOpen, onClose, children }) {
                 setTimeout(() => setAnimatingBack(false), 300);
             }
         }
-    
+
         setTouchHandledOnce(false);
     };
-    
+
     useEffect(() => {
         if (!isOpen) {
             setTopOffset(32);
@@ -77,7 +76,7 @@ export default function MainDrawer({ isOpen, onClose, children }) {
             window.history.pushState(null, null, window.location.pathname);
 
             const handlePopState = () => {
-                onClose(); 
+                onClose();
             };
 
             window.addEventListener('popstate', handlePopState);
@@ -97,7 +96,7 @@ export default function MainDrawer({ isOpen, onClose, children }) {
             w="full"
             maxW={96}
         >
-            <DrawerOverlay />
+            <DrawerBackdrop  />
 
             <DrawerContent
                 ref={drawerRef}
@@ -111,13 +110,13 @@ export default function MainDrawer({ isOpen, onClose, children }) {
                 onTouchEnd={handleTouchEnd}
                 w="container.md"
                 borderTopRadius={26}
-                backgroundColor={boxClr}
+                backgroundColor={boxColor}
                 h="calc(100% - 32px)"
-                color={textClr}
+                color={textColor}
             >
                 <Center>
                     <Box
-                        backgroundColor={textClr}
+                        backgroundColor={textColor}
                         width={32}
                         height={2}
                         top={-4}

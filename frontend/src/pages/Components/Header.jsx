@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Box, Flex, IconButton, useColorModeValue, Input, InputGroup, InputLeftElement, useDisclosure } from "@chakra-ui/react";
-import icons from "../../icons"
-import ProfileDrawer from "./ProfileDrawer"
-import MainDrawer from "./MainDrawer"
+import { Box, Flex, IconButton, Input, useDisclosure } from "@chakra-ui/react";
+import { InputGroup } from "../../components/ui/input-group"
+import icons from "../../icons";
+import ProfileDrawer from "./ProfileDrawer";
+import MainDrawer from "./MainDrawer";
 
-export default function Layout() {
-    const boxClr = useColorModeValue("boxColor.100", "boxColor.900");
-    const textClr = useColorModeValue("textColor.100", "textColor.900");
-    const bgColor = useColorModeValue("bgColor.100", "bgColor.900");
+const Header = () => {
+    const boxColor = "boxColor.100";
+    const textColor = "textColor.100";
+    const bgColor = "bgColor.100";
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [isFocused, setIsFocused] = useState(false);
@@ -46,21 +47,19 @@ export default function Layout() {
                 px={8}
                 zIndex={2}
             >
-
                 <Flex
                     p={2}
                     boxShadow="light"
-                    bgColor={boxClr}
-                    color={textClr}
+                    bgColor={boxColor}
+                    color={textColor}
                     justify="space-between"
                     align="center"
                     borderRadius={16}
                 >
-
                     <IconButton
                         variant="ghost"
                         size="md"
-                        icon={icons.burger({ color: textClr })}
+                        icon={icons.burger({ color: textColor })}
                         opacity={isFocused ? "0" : "1"}
                         userSelect={isFocused ? "none" : "auto"}
                         transition="opacity 0.3s ease-in-out"
@@ -72,41 +71,36 @@ export default function Layout() {
                         onBlur={handleBlur}
                         transition="width 0.5s ease-in-out"
                     >
-                        <InputLeftElement pointerEvents='none'>
-                            {icons.search({ color: textClr })}
-                        </InputLeftElement>
+                        {/* <InputLeftElement pointerEvents='none'>
+                            {icons.search({ color: textColor })}
+                        </InputLeftElement> */}
 
                         <Input
                             type="text"
-                            placeholder="Найти донер"
-                            border="none"
-                            fontFamily="Montserrat"
-                            color={textClr}
-                            fontSize="sm"
-                            focusBorderColor="transparent"
-                            maxLength="20"
-                            pr={0}
+                            placeholder="Найти"
                             value={inputValue}
                             onChange={handleChange}
+                            bgColor={boxColor}
+                            color={textColor}
+                            _placeholder={{ color: "gray.500" }}
+                            borderRadius={16}
                         />
                     </InputGroup>
 
                     <IconButton
                         variant="ghost"
                         size="md"
-                        icon={icons.profile({ color: textClr })}
+                        icon={icons.profile({ color: textColor })}
                         onClick={onOpen}
-                        opacity={isFocused ? "0" : "1"}
-                        userSelect={isFocused ? "none" : "auto"}
-                        transition="opacity 0.3s ease-in-out"
                     />
-
                 </Flex>
             </Box>
 
-            <MainDrawer isOpen={isOpen} onClose={onClose} children={
-                <ProfileDrawer />
-            } />
+            <MainDrawer isOpen={isOpen} onClose={onClose}>
+                <ProfileDrawer onClose={onClose} />
+            </MainDrawer>
         </>
     );
-}
+};
+
+export default Header;

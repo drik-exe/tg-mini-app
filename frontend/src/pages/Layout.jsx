@@ -2,7 +2,6 @@ import React from "react";
 import {
     Box,
     Center,
-    useColorModeValue,
     Text,
     Button,
     Container,
@@ -16,8 +15,7 @@ import BasketDrawer from "./Components/BasketDrawer";
 import ConfirnOrderDrawer from "./Components/ConfirnOrderDrawer";
 
 export default function Layout() {
-    const textClr = useColorModeValue("textColor.100", "textColor.900");
-
+    const textColor = "textColor.100"; 
     const prices = ["6.5", "8.5", "10.5"];
     const sizes = ["300г", "400г", "500г"];
     const title = "Чикен";
@@ -53,10 +51,8 @@ export default function Layout() {
                     w="full"
                     maxW="container.md"
                     px={8}
-                    color={textClr}
-                    css={`
-                        column-count: 2;
-                    `}
+                    color={textColor}
+                    css={`column-count: 2;`}
                     gap={6}
                     mt={28}
                     mb="105px"
@@ -103,4 +99,4 @@ export default function Layout() {
             </MainDrawer>
         </>
     );
-}
+};

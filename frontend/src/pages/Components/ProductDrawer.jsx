@@ -3,7 +3,6 @@ import {
     Flex,
     Text,
     Box,
-    useColorModeValue,
     Center,
     Image,
     Container,
@@ -11,9 +10,9 @@ import {
 } from "@chakra-ui/react";
 
 export default function ProductDrawer({ product }) {
-    const boxClr = useColorModeValue("boxColor.100", "boxColor.900");
-    const accentColor = useColorModeValue("accentColor.100", "accentColor.900");
-    const bgColor = useColorModeValue("bgColor.100", "bgColor.900");
+    const boxClr = "boxColor.100"; 
+    const accentColor = "accentColor.100";
+    const bgColor = "bgColor.100";
 
     let [amount, setAmount] = useState(1);
     const [selectedIndex, setSelectedIndex] = useState(0);
