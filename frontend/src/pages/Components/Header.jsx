@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Box, Flex, IconButton, Input, useDisclosure } from "@chakra-ui/react";
 import { InputGroup } from "../../components/ui/input-group"
 import icons from "../../icons";
-import ProfileDrawer from "./ProfileDrawer";
-import MainDrawer from "./MainDrawer";
+// import ProfileDrawer from "./ProfileDrawer";
+// import MainDrawer from "./MainDrawer";
 
 const Header = () => {
     const boxColor = "boxColor.100";
@@ -96,9 +96,9 @@ const Header = () => {
                 </Flex>
             </Box>
 
-            <MainDrawer isOpen={isOpen} onClose={onClose}>
+            {/* <MainDrawer isOpen={isOpen} onClose={onClose}>
                 <ProfileDrawer onClose={onClose} />
-            </MainDrawer>
+            </MainDrawer> */}
         </>
     );
 };

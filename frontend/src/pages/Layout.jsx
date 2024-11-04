@@ -9,10 +9,10 @@ import {
     useDisclosure,
 } from "@chakra-ui/react";
 import Header from "./Components/Header";
-import MainCard from "./Components/MainCard";
-import MainDrawer from "./Components/MainDrawer";
-import BasketDrawer from "./Components/BasketDrawer";
-import ConfirnOrderDrawer from "./Components/ConfirnOrderDrawer";
+// import MainCard from "./Components/MainCard";
+// import MainDrawer from "./Components/MainDrawer";
+// import BasketDrawer from "./Components/BasketDrawer";
+// import ConfirnOrderDrawer from "./Components/ConfirnOrderDrawer";
 
 export default function Layout() {
     const textColor = "textColor.100"; 
@@ -67,7 +67,7 @@ export default function Layout() {
                         </Text>
                     </Box>
 
-                    <MainCard product={productInfo} />
+                    {/* <MainCard product={productInfo} />
                     <MainCard product={productInfo2} />
                     <MainCard product={productInfo} />
                     <MainCard product={productInfo2} />
@@ -78,7 +78,7 @@ export default function Layout() {
                     <MainCard product={productInfo} />
                     <MainCard product={productInfo2} />
                     <MainCard product={productInfo} />
-                    <MainCard product={productInfo2} />
+                    <MainCard product={productInfo2} /> */}
                 </Box>
 
                 <Container variant="bot-container">
@@ -90,13 +90,13 @@ export default function Layout() {
                 </Container>
             </Center>
 
-            <MainDrawer isOpen={isBasketOpen} onClose={onBasketClose}>
+            {/* <MainDrawer isOpen={isBasketOpen} onClose={onBasketClose}>
                 <BasketDrawer onDrawerClose={handleOrderClick} />
             </MainDrawer>
 
             <MainDrawer isOpen={isConfirmOpen} onClose={onConfirmClose}>
                 <ConfirnOrderDrawer />
-            </MainDrawer>
+            </MainDrawer> */}
         </>
     );
 };
