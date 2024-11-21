@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Flex, IconButton, Input, useDisclosure } from "@chakra-ui/react";
-import { InputGroup } from "../../components/ui/input-group"
+import { InputGroup } from "../../components/ui/input-group";
 import icons from "../../icons";
 // import ProfileDrawer from "./ProfileDrawer";
 // import MainDrawer from "./MainDrawer";
@@ -30,31 +30,31 @@ const Header = () => {
     return (
         <>
             <Box
-                w="full"
-                h={16}
+                w="100%"
+                h="16"
                 backgroundColor={bgColor}
                 pos="fixed"
-                top={0}
-                zIndex={1}
+                top="0"
+                zIndex="1"
             />
 
             <Box
                 as="header"
                 pos="fixed"
-                top={8}
-                w="full"
+                top="8"
+                w="100%"
                 maxW="container.md"
-                px={8}
-                zIndex={2}
+                px="8"
+                zIndex="2"
             >
                 <Flex
-                    p={2}
+                    p="2"
                     boxShadow="light"
                     bgColor={boxColor}
                     color={textColor}
                     justify="space-between"
                     align="center"
-                    borderRadius={16}
+                    borderRadius="16"
                 >
                     <IconButton
                         variant="ghost"
@@ -66,12 +66,12 @@ const Header = () => {
                     />
 
                     <InputGroup
-                        w={isFocused ? "full" : "140px"}
+                        w={isFocused ? "100%" : "140px"}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         transition="width 0.5s ease-in-out"
                     >
-                        {/* <InputLeftElement pointerEvents='none'>
+                        {/* <InputLeftElement pointerEvents="none">
                             {icons.search({ color: textColor })}
                         </InputLeftElement> */}
 
@@ -83,7 +83,7 @@ const Header = () => {
                             bgColor={boxColor}
                             color={textColor}
                             _placeholder={{ color: "gray.500" }}
-                            borderRadius={16}
+                            borderRadius="16"
                         />
                     </InputGroup>
 
