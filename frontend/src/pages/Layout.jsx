@@ -50,14 +50,14 @@ export default function Layout() {
                 <Box
                     w="full"
                     maxW="container.md"
-                    px={8}
+                    px="8"
                     color={textColor}
                     css={`column-count: 2;`}
-                    gap={6}
-                    mt={28}
+                    gap="6"
+                    mt="28"
                     mb="105px"
                 >
-                    <Box mb={6}>
+                    <Box mb="6">
                         <Text
                             fontWeight="bold"
                             fontSize="clamp(10px, 7.2vw, 56px)"
